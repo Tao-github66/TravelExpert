@@ -1,0 +1,61 @@
+﻿@model IEnumerable<Workshop_5_Group_3.Models.Package>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>List of Packages available</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.PkgName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PkgStartDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PkgEndDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PkgDesc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PkgBasePrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PkgAgencyCommission)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.PkgName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PkgStartDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PkgEndDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PkgDesc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PkgBasePrice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PkgAgencyCommission)
+        </td>
+        <td>
+            @*@Html.ActionLink("Edit", "Edit", new { id=item.PackageId }) |*@
+            @Html.ActionLink("Details", "Details", new { id=item.PackageId })
+            @*@Html.ActionLink("Delete", "Delete", new { id=item.PackageId })*@
+        </td>
+    </tr>
+}
+
+</table>

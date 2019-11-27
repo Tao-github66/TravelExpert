@@ -1,0 +1,89 @@
+﻿@model IEnumerable<Workshop_5_Group_3.Models.Booking>
+@{
+    IFormatProvider formatProvider = new System.Globalization.CultureInfo("en-US");
+}
+
+@{
+    ViewBag.Title = "Index";
+
+}
+
+@*<h2>Welcome @Model.FirstOrDefault().Customer.CustFirstName @Model.FirstOrDefault().Customer.CustLastName</h2>*@
+<h2>Welcome</h2>
+
+<h4>
+    Booking History
+</h4>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.BookingDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BookingNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TravelerCount)
+        </th>
+        @*<th>
+                @Html.DisplayNameFor(model => model.Customer.CustFirstName)
+            </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.Package.PkgName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TripType.TTName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Package.PkgBasePrice)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.BookingDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BookingNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TravelerCount)
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.Customer.CustFirstName)
+                </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Package.PkgName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TripType.TTName)
+            </td>
+            <td>
+                @{
+                    string strPkgBasePrice = item.Package.PkgBasePrice.ToString("C", formatProvider);
+                }
+                @Html.DisplayFor(modelItem => strPkgBasePrice)
+
+            </td>
+            <td>
+                @*@Html.ActionLink("Edit", "Edit", new { id=item.BookingId }) |*@
+                @Html.ActionLink("Details", "Details", new { id = item.BookingId })
+                @*@Html.ActionLink("Delete", "Delete", new { id=item.BookingId })*@
+            </td>
+        </tr>
+
+    }
+
+</table>
+<h4>Total Cost: @(Model.Sum(x => x.Package.PkgBasePrice * (decimal)x.TravelerCount).ToString("C", formatProvider))</h4>
+
+
+<div>
+    @Html.ActionLink("Logout", "Index", "Home")
+</div>
+
+
+

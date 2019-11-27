@@ -1,0 +1,72 @@
+﻿@model Workshop_5_Group_3.Models.Package
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Package</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PkgName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PkgName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PkgStartDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PkgStartDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PkgEndDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PkgEndDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PkgDesc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PkgDesc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PkgBasePrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PkgBasePrice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PkgAgencyCommission)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PkgAgencyCommission)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

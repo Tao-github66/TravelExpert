@@ -1,0 +1,52 @@
+﻿@model Workshop_5_Group_3.Models.Customer
+
+@{
+    ViewBag.Title = "Login";
+    //Layout = "~/Views/Layout/_Layout.cshtml";
+}
+
+<h2 class="text-center">User Login</h2>
+
+@using (Html.BeginForm())
+{
+    <table width="100%">
+        <tr>
+            <td align="center">
+                <table class="table-condensed">
+                    <tr>
+                        <td align="left">
+                            @Html.LabelFor(m => m.UserId)
+                        </td>
+                        <td align="right">
+                            @Html.EditorFor(m => m.UserId, new { htmlAttributes = new { @class = "form-control", placeholder = "Username" } })
+                            &nbsp;&nbsp;
+                            <br />
+                            @Html.ValidationMessageFor(m => m.UserId)
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td align="left">
+                            @Html.LabelFor(m => m.Password)
+                        </td>
+                        <td align="right">
+                                @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Password" })
+                            &nbsp;&nbsp;
+                            <br />
+                            @Html.ValidationMessageFor(m => m.Password)
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="2" align="center">
+                            <input type="submit" value="Login" class="btn btn-primary" />
+                        </td>
+                    </tr>
+                </table>
+                <br />
+                <br />
+                @ViewBag.ErrorMessage
+            </td>
+        </tr>
+    </table>
+}
